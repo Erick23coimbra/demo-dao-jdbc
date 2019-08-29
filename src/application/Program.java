@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -16,6 +17,7 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 		SellerDao sellerdao = DaoFactory.CreateSellerDao();	
+		DepartmentDao deparmentdao = DaoFactory.CreateDepartmentDao();
 		
 		System.out.println("======Teste n°1:Seller FindById======");
 		Seller seller = sellerdao.findById(3);
@@ -42,18 +44,24 @@ public class Program {
 		sellerdao.insert(newSeller);
 		System.out.println("Inserted! new Id = " + newSeller.getId());
 		
-		System.out.println("\n======Teste n°5 insert======");
+		System.out.println("\n======Teste n°5 update======");
 		
-		seller = sellerdao.findById(2);
+		seller = sellerdao.findById(1);
 		seller.setName("Marta");
 		sellerdao.update(seller);
 		System.out.println("Update Complatede");
 		
-		System.out.println("\n======Teste n°6 insert======");
-		System.out.println("Digite o cod para deletar");
-		int id = sc.nextInt();
-		sellerdao.deleteById(id);
-		System.out.println("Delete complited");
+		//System.out.println("\n======Teste n°6 insert======");
+		//System.out.println("Digite o cod para deletar");
+		//int id = sc.nextInt();
+		//sellerdao.deleteById(id);
+		//System.out.println("Delete complited");
+		
+		System.out.println("\n======Teste n°7 insert======");
+		Department newdepartment = new Department(null,"greg");
+		deparmentdao.insert(newdepartment);
+		System.out.println("Inserted! new Id = " + newdepartment.getId());
+		
 		sc.close();
 	}
 
